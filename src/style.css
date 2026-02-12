@@ -1,0 +1,428 @@
+:root {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --bg-tertiary: #e9ecef;
+  --text-primary: #212529;
+  --text-secondary: #6c757d;
+  --border-color: #dee2e6;
+  --accent: #4a6fa5;
+  --success: #28a745;
+  --danger: #dc3545;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  height: 100vh;
+  overflow: hidden;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.app-header {
+  background-color: var(--bg-primary);
+  padding: 0rem 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.app-header h1 {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.connection-status {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.status-indicator {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: var(--danger);
+}
+
+.status-indicator.connected {
+  background-color: var(--success);
+}
+
+.app-main {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow: hidden;
+}
+
+.controls-section {
+  background-color: var(--bg-primary);
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.port-selector {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.port-selector select {
+  padding: 0.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background-color: var(--bg-primary);
+  min-width: 150px;
+}
+
+button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  background-color: var(--accent);
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  font-size: 0.9rem;
+}
+
+button:hover {
+  background-color: #3a5a8a;
+}
+
+button:disabled {
+  background-color: var(--bg-tertiary);
+  color: var(--text-secondary);
+  cursor: not-allowed;
+}
+
+.data-display {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.data-item {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.data-label {
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.data-value {
+  font-weight: 600;
+  min-width: 50px;
+}
+
+.graph-controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-left: 0.5rem;
+}
+
+.axis-selector {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.axis-selector select {
+  padding: 0.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background-color: var(--bg-primary);
+  min-width: 80px;
+}
+
+.graph-section {
+  flex: 1;
+  padding: 1.5rem;
+  overflow: hidden;
+}
+
+#data-chart {
+  width: 100%;
+  height: 100%;
+}
+
+/* Responsive adjustments for buttons */
+@media (max-width: 992px) {
+  button {
+    padding: 0.45rem 0.9rem;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 768px) {
+  button {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+  }
+  
+  .controls-section {
+    gap: 1rem;
+  }
+  
+  .graph-controls {
+    gap: 0.8rem;
+  }
+}
+
+@media (max-width: 576px) {
+  button {
+    padding: 0.35rem 0.7rem;
+    font-size: 0.75rem;
+  }
+  
+  .controls-section {
+    gap: 0.8rem;
+  }
+  
+  .graph-controls {
+    gap: 0.6rem;
+  }
+  
+  .port-selector {
+    flex-wrap: wrap;
+  }
+  
+  .graph-controls {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 480px) {
+  button {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.7rem;
+  }
+  
+  .port-selector select {
+    min-width: 120px;
+  }
+  
+  .axis-selector select {
+    min-width: 60px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 
+
+old style.css content 
+
+:root {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --bg-tertiary: #e9ecef;
+  --text-primary: #212529;
+  --text-secondary: #6c757d;
+  --border-color: #dee2e6;
+  --accent: #4a6fa5;
+  --success: #28a745;
+  --danger: #dc3545;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  height: 100vh;
+  overflow: hidden;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.app-header {
+  background-color: var(--bg-primary);
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.app-header h1 {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.connection-status {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.status-indicator {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: var(--danger);
+}
+
+.status-indicator.connected {
+  background-color: var(--success);
+}
+
+.app-main {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow: hidden;
+}
+
+.controls-section {
+  background-color: var(--bg-primary);
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.port-selector {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.port-selector select {
+  padding: 0.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background-color: var(--bg-primary);
+  min-width: 150px;
+}
+
+button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  background-color: var(--accent);
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+button:hover {
+  background-color: #3a5a8a;
+}
+
+button:disabled {
+  background-color: var(--bg-tertiary);
+  color: var(--text-secondary);
+  cursor: not-allowed;
+}
+
+.data-display {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.data-item {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.data-label {
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.data-value {
+  font-weight: 600;
+  min-width: 50px;
+}
+
+.graph-controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  /* margin-left: auto; 
+  margin-left: 0.5rem;
+}
+
+.axis-selector {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.axis-selector select {
+  padding: 0.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background-color: var(--bg-primary);
+  min-width: 80px;
+}
+
+.graph-section {
+  flex: 1;
+  padding: 1.5rem;
+  overflow: hidden;
+}
+
+#data-chart {
+  width: 100%;
+  height: 100%;
+}
+*/

@@ -1,0 +1,70 @@
+{
+  "name": "v-i-characteristics",
+  "version": "2.0.0",
+  "description": "Real-time COM Port Data Visualization",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "electron .",
+     "dev": "electron . --dev",
+    "build": "electron-builder",
+     "dist": "electron-builder --publish=never",
+    "dist:win": "electron-builder --win",
+    "dist:mac": "electron-builder --mac",
+    "dist:linux": "electron-builder --linux",
+    "postinstall": "electron-builder install-app-deps"
+  },
+  "author": "STPL",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^25.2.0",
+    "electron-builder": "^24.4.0",
+    "electron-reload": "^2.0.0-alpha.1"
+  },
+  "dependencies": {
+    "chart.js": "^4.3.0",
+    "serialport": "^11.0.1"
+  },
+  "build": {
+    "appId": "com.scientech.vi-characteristics",
+    "productName": "VI Characteristics",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "**/*",
+      "!**/node_modules/*/{CHANGELOG.md,README.md,README,readme.md,readme}",
+      "!**/node_modules/*/{test,__tests__,tests,powered-test,example,examples}",
+      "!**/node_modules/*.d.ts",
+      "!**/node_modules/.bin",
+      "!**/*.{iml,o,hprof,orig,pyc,pyo,rbc,swp,csproj,sln,xproj}",
+      "!.editorconfig",
+      "!**/._*",
+      "!**/{.DS_Store,.git,.hg,.svn,CVS,RCS,SCCS,.gitignore,.gitattributes}",
+      "!**/{__pycache__,thumbs.db,.flowconfig,.idea,.vs,.nyc_output}",
+      "!**/{appveyor.yml,.travis.yml,circle.yml}",
+      "!**/{npm-debug.log,yarn.lock,.yarn-integrity,.yarn-metadata.json}"
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "logo.ico"
+    },
+    "mac": {
+      "target": "dmg",
+      "icon": "logo.icns"
+    },
+    "linux": {
+      "target": "AppImage",
+      "icon": "Scientech.png"
+    },
+    "nsis": {
+      "oneClick": false,
+      "installerIcon": "logo.ico",
+      "uninstallerIcon": "logo.ico",
+      "uninstallDisplayName": "VI Characteristics Uninstaller",
+      "license": "license.md",
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
+  }
+}
