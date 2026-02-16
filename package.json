@@ -1,6 +1,6 @@
 {
   "name": "v-i-characteristics",
-  "version": "2.0.0",
+  "version": "1.0.0",
   "description": "Real-time COM Port Data Visualization",
   "main": "src/main.js",
   "scripts": {

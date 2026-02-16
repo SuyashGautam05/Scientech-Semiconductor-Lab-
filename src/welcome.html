@@ -7,12 +7,59 @@
   <link rel="stylesheet" href="welcome-style.css">
 </head>
 <body>
+  <div class="background-animation">
+    <div class="circuit-line line-1"></div>
+    <div class="circuit-line line-2"></div>
+    <div class="circuit-line line-3"></div>
+    <div class="circuit-line line-4"></div>
+  </div>
+  
   <div class="welcome-container">
     <div class="welcome-content">
-      <img src="./Assets/Scientech logo-2.png" alt="Scientech Logo" class="logo">
-      <h1 class="title">Scientech Semiconductor Lab</h1>
-      <p class="subtitle">V-I Characteristics Software</p>
-      <button id="enter-btn" class="enter-button">Enter</button>
+      <div class="logo-container">
+        <img src="./Assets/Scientech logo-2.png" alt="Scientech Logo" class="logo">
+        <div class="logo-glow"></div>
+      </div>
+      
+      <div class="text-content">
+        <h1 class="title">
+          <span class="title-main">Scientech Semiconductor Lab</span>
+          <span class="title-sub">V-I Characteristics Software</span>
+        </h1>
+        <!-- <div class="divider"></div> -->
+        <p class="subtitle">Version 1.0</p>
+        <!-- <p class="version">Version 1.0</p> -->
+      </div>
+      
+      <button id="enter-btn" class="enter-button">
+        <span class="button-text">Enter Application</span>
+        <span class="button-arrow">→</span>
+      </button>
+      
+      <div class="footer-info">
+        <span class="info-item">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+          Real-time Analysis
+        </span>
+        <span class="info-item">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <line x1="12" y1="1" x2="12" y2="23"></line>
+            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+          </svg>
+          Multi-quadrant Support
+        </span>
+        <span class="info-item">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+          CSV Export
+        </span>
+      </div>
     </div>
   </div>
 

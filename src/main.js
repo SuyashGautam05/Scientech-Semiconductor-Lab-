@@ -7,8 +7,8 @@ let serialPort;
 
 function createWindow() {
   mainWindow = new BrowserWindow({
-    width: 1000,
-    height: 700,
+    width: 1200,
+    height: 900,
     minWidth: 800,
     minHeight: 600,
     icon: path.join(__dirname, 'Assets', 'logo.ico'),
@@ -16,7 +16,7 @@ function createWindow() {
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,
-      devTools: true
+      devTools: false
     },
     show: false
   });
