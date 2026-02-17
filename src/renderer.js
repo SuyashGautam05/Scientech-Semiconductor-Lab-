@@ -159,6 +159,7 @@ const chart = new Chart(ctx, {
 const dataPoints = [];
 const maxDataPoints = 100;
 let currentPoint = null;
+let lastRawData = null; // keeps the last received packet for display refresh
 
 // Helper function to get value (handles negative axis selection)
 function getValue(dataPoint, axis) {
@@ -286,13 +287,30 @@ ipcRenderer.on('connection-status', (event, status) => {
   }
 });
 
+// Update the 4 data-display boxes to reflect sign based on selected axes
+function updateValueDisplays(data) {
+  const xAxis = xAxisSelect.value;
+  const yAxis = yAxisSelect.value;
+
+  // For each channel, negate if that channel is selected as a negative axis
+  const v1Sign = (xAxis === '-V1' || yAxis === '-V1') ? -1 : 1;
+  const i1Sign = (xAxis === '-I1' || yAxis === '-I1') ? -1 : 1;
+  const v2Sign = (xAxis === '-V2' || yAxis === '-V2') ? -1 : 1;
+  const i2Sign = (xAxis === '-I2' || yAxis === '-I2') ? -1 : 1;
+
+  v1Value.textContent = (v1Sign * data.V1).toFixed(3);
+  i1Value.textContent = (i1Sign * data.I1).toFixed(3);
+  v2Value.textContent = (v2Sign * data.V2).toFixed(3);
+  i2Value.textContent = (i2Sign * data.I2).toFixed(3);
+}
+
 // Handle incoming data - stores all four values
 ipcRenderer.on('serial-data', (event, data) => {
-  // Update value displays
-  v1Value.textContent = data.V1.toFixed(3);
-  i1Value.textContent = data.I1.toFixed(3);
-  v2Value.textContent = data.V2.toFixed(3);
-  i2Value.textContent = data.I2.toFixed(3);
+  // Cache raw data so display can refresh when axes change
+  lastRawData = data;
+
+  // Update value displays (respects negative axis selection)
+  updateValueDisplays(data);
   
   // Get selected axes
   const xAxis = xAxisSelect.value;
@@ -363,18 +381,23 @@ function updateChartAxes() {
   // Clear all data when axes change
   dataPoints.length = 0;
   currentPoint = null;
-  
+
   // Clear chart data
   chart.data.datasets[0].data = [];
   chart.data.datasets[1].data = [];
-  
+
   // Update axis labels
   chart.options.scales.x.title.text = xAxisSelect.value;
   chart.options.scales.y.title.text = yAxisSelect.value;
-  
+
+  // Refresh displayed values immediately using last received raw data
+  if (lastRawData) {
+    updateValueDisplays(lastRawData);
+  }
+
   // Update scaling with auto-calculated ranges
   updateScale();
-  
+
   chart.update();
 }
 
@@ -442,6 +465,7 @@ function resetAll() {
   // Clear graph data
   dataPoints.length = 0;
   currentPoint = null;
+  lastRawData = null;
   
   // Clear chart data
   chart.data.datasets[0].data = [];
